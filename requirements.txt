@@ -1,0 +1,11 @@
+next@latest
+react@latest
+react-dom@latest
+@ethersproject/providers
+@ethersproject/contracts
+@tailwindcss/forms
+@headlessui/react
+@heroicons/react
+ai@latest
+openai@latest
+dotenv

@@ -1,0 +1,112 @@
+{
+  "name": "web3-project-generator",
+  "version": "1.0.0",
+  "description": "Generate Web3 projects with AI",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.2.0",
+    "@radix-ui/react-dialog": "^1.1.13",
+    "@radix-ui/react-dropdown-menu": "^2.1.14",
+    "@radix-ui/react-slot": "^1.2.2",
+    "@radix-ui/react-tabs": "^1.1.11",
+    "@radix-ui/react-toast": "^1.2.13",
+    "@radix-ui/react-tooltip": "^1.2.6",
+    "@rainbow-me/rainbowkit": "^2.2.5",
+    "@tanstack/react-query": "^5.76.1",
+    "@vercel/kv": "^1.0.0",
+    "@walletconnect/web3-provider": "^1.8.0",
+    "@web3modal/ethereum": "^2.7.1",
+    "@web3modal/react": "^2.7.1",
+    "@web3modal/wagmi": "^5.1.11",
+    "autoprefixer": "^10.4.16",
+    "axios": "^1.6.0",
+    "class-variance-authority": "^0.7.1",
+    "classnames": "^2.3.2",
+    "clsx": "^2.1.1",
+    "crypto-browserify": "^3.12.1",
+    "ethers": "^5.7.2",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^12.12.2",
+    "https-browserify": "^1.0.0",
+    "jszip": "^3.10.1",
+    "next": "14.0.4",
+    "next-themes": "^0.4.6",
+    "openai": "^4.0.0",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-markdown": "^8.0.7",
+    "react-syntax-highlighter": "^15.5.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animate": "^1.0.7",
+    "uuid": "^9.0.1",
+    "viem": "^2.29.4",
+    "wagmi": "^2.15.3",
+    "web3": "^1.9.0",
+    "web3modal": "^1.9.12"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "@types/uuid": "^9.0.8",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.0.4",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "typescript": "^5.3.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/web3-project-generator.git"
+  },
+  "keywords": [
+    "web3",
+    "ethereum",
+    "blockchain",
+    "dapp",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "openai",
+    "ai"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/web3-project-generator/issues"
+  },
+  "homepage": "https://github.com/yourusername/web3-project-generator#readme"
+}
