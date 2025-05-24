@@ -8,7 +8,7 @@ export default function TestWorkflowPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 p-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white mb-4">🧪 New Workflow Test</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">⚡ EtherForge Workflow Test</h1>
           <p className="text-slate-400 mb-6">Test the improved template interaction flow</p>
           <Link href="/" className="inline-block text-blue-400 hover:text-blue-300 underline">
             ← Back to Main Generator

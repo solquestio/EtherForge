@@ -171,9 +171,9 @@ export default function Home() {
               <div className="text-3xl">🚀</div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  VibeCode AI
+                  EtherForge
                 </h1>
-                <p className="text-sm text-slate-400">The Future of Web3 Development</p>
+                <p className="text-sm text-slate-400">Where Smart Contracts Are Born</p>
               </div>
             </motion.div>
             
@@ -510,7 +510,7 @@ export default function Home() {
             <div className="flex items-center space-x-4">
               <span>Democratizing Web3 Development</span>
               <span className="text-green-400">●</span>
-              <span>Powered by AI</span>
+              <span>Powered by EtherForge</span>
             </div>
           </div>
         </div>

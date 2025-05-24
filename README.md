@@ -1,6 +1,6 @@
-# 🚀 VibeCode AI - Web3 Project Generator
+# ⚡ EtherForge - Web3 Project Generator
 
-> **The Future of Web3 Development** - Transform natural language into production-ready Web3 applications
+> **Where Smart Contracts Are Born** - Transform natural language into production-ready Web3 applications
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.0.4-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9.4-blue)](https://www.typescriptlang.org/)
@@ -9,9 +9,9 @@
 
 ## ✨ **Built for ETH Dublin 2025**
 
-VibeCode AI is an innovative AI-powered platform that democratizes Web3 development by allowing users to describe their ideas in natural language and automatically generate complete, production-ready decentralized applications.
+EtherForge is an innovative AI-powered platform that democratizes Web3 development by allowing users to describe their ideas in natural language and automatically generate complete, production-ready decentralized applications.
 
-![VibeCode AI Demo](https://via.placeholder.com/800x400?text=VibeCode+AI+Demo)
+![EtherForge Demo](https://via.placeholder.com/800x400?text=EtherForge+Demo)
 
 ## 🌟 **Key Features**
 
@@ -52,8 +52,8 @@ VibeCode AI is an innovative AI-powered platform that democratizes Web3 developm
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/vibecode-ai.git
-   cd vibecode-ai
+   git clone https://github.com/yourusername/etherforge.git
+   cd etherforge
    ```
 
 2. **Install dependencies**
@@ -82,7 +82,7 @@ VibeCode AI is an innovative AI-powered platform that democratizes Web3 developm
 ## 🏗️ **Project Structure**
 
 ```
-vibecode-ai/
+etherforge/
 ├── app/                          # Next.js 14 App Router
 │   ├── components/              # Reusable React components
 │   │   ├── UIPreview.tsx       # Live UI preview component
@@ -225,10 +225,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 **Support & Community**
 
-- 🐛 **Bug Reports**: [Issues](https://github.com/yourusername/vibecode-ai/issues)
-- 💡 **Feature Requests**: [Discussions](https://github.com/yourusername/vibecode-ai/discussions)
-- 🗨️ **Community**: [Discord](https://discord.gg/vibecode)
-- 🐦 **Updates**: [@VibeCodeAI](https://twitter.com/VibeCodeAI)
+- 🐛 **Bug Reports**: [Issues](https://github.com/yourusername/etherforge/issues)
+- 💡 **Feature Requests**: [Discussions](https://github.com/yourusername/etherforge/discussions)
+- 🗨️ **Community**: [Discord](https://discord.gg/etherforge)
+- 🐦 **Updates**: [@EtherForge](https://twitter.com/EtherForge)
 
 ---
 

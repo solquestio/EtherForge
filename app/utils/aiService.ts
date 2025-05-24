@@ -265,9 +265,9 @@ export class AIService {
     this.conversationHistory.push({
       id: 'welcome',
       role: 'assistant',
-      content: `🚀 **Welcome to VibeCode AI!** 
+      content: `⚡ **Welcome to EtherForge!** 
 
-I'm your AI-powered Web3 development assistant. I can generate complete dApps with beautiful UIs in minutes!
+I'm your AI-powered Web3 development assistant. Where smart contracts are born! I can generate complete dApps with beautiful UIs in minutes.
 
 **Popular Templates:**
 • 🎨 **NFT Marketplace** - Complete with auctions & royalties (2 min)
@@ -463,7 +463,7 @@ Your dApp is now live! You can interact with it immediately.`,
         language: 'markdown',
         content: `# ${templateId.charAt(0).toUpperCase() + templateId.slice(1)} dApp
 
-Built with VibeCode AI for ETH Dublin 2025
+Built with EtherForge for ETH Dublin 2025
 
 ## Features
 - Web3 Integration
