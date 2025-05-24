@@ -30,7 +30,7 @@ export default function UIPreview({ templateType, isVisible }: UIPreviewProps) {
             <span className="text-2xl">🎨</span>
             <div>
               <span className="text-white font-semibold text-lg">NFT Marketplace</span>
-              <p className="text-slate-400 text-xs">Powered by VibeCode AI</p>
+              <p className="text-slate-400 text-xs">Powered by VibeForge</p>
             </div>
           </div>
           <button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all">

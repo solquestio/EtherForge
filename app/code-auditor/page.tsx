@@ -490,7 +490,7 @@ contract MyContract {
             <div className="flex items-center space-x-4">
               <span>AI Code Auditor</span>
               <span className="text-red-400">●</span>
-              <span>Powered by VibeCode AI</span>
+              <span>Powered by VibeForge</span>
             </div>
           </div>
         </div>

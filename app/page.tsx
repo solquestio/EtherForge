@@ -168,13 +168,11 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="text-3xl">🚀</div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  EtherForge
-                </h1>
-                <p className="text-sm text-slate-400">Where Smart Contracts Are Born</p>
-              </div>
+              <img 
+                src="/logo-dark.svg" 
+                alt="VibeForge Logo" 
+                className="h-12 w-auto"
+              />
             </motion.div>
             
             <motion.div
@@ -510,7 +508,7 @@ export default function Home() {
             <div className="flex items-center space-x-4">
               <span>Democratizing Web3 Development</span>
               <span className="text-green-400">●</span>
-              <span>Powered by EtherForge</span>
+              <span>Powered by VibeForge</span>
             </div>
           </div>
         </div>

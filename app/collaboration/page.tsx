@@ -601,7 +601,7 @@ contract NFTMarketplace is ERC721, Ownable {
             <div className="flex items-center space-x-4">
               <span>Collaboration Hub</span>
               <span className="text-purple-400">●</span>
-              <span>Powered by VibeCode AI</span>
+              <span>Powered by VibeForge</span>
             </div>
           </div>
         </div>
