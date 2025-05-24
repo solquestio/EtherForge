@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAccount, useDisconnect } from 'wagmi';
+import { useWeb3Modal } from '@web3modal/wagmi/react';
 import TypingEffect from './components/TypingEffect';
 import LoadingSpinner from './components/LoadingSpinner';
 import { aiService, ChatMessage } from './utils/aiService';
@@ -39,6 +41,11 @@ export default function Home() {
   const [currentUIPreview, setCurrentUIPreview] = useState<string | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  
+  // Wallet hooks
+  const { address, isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
+  const { open } = useWeb3Modal();
 
   useEffect(() => {
     // Initialize with welcome message
@@ -168,11 +175,12 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <img 
-                src="/logo-dark.svg" 
-                alt="VibeForge Logo" 
-                className="h-12 w-auto"
-              />
+              <div className="flex items-center space-x-3">
+                <div className="text-3xl">⚡</div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+                  VibeForge
+                </h1>
+              </div>
             </motion.div>
             
             <motion.div
@@ -182,11 +190,28 @@ export default function Home() {
               className="flex items-center space-x-4"
             >
               <div className="text-sm text-slate-300">
-                <span className="text-green-400">●</span> ETH Dublin 2025
+                <span className="text-green-400">●</span> Live Demo
               </div>
-              <button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-medium transition-all transform hover:scale-105">
-                Connect Wallet
-              </button>
+              {address ? (
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm text-slate-300">
+                    {`${address.slice(0, 6)}...${address.slice(-4)}`}
+                  </span>
+                  <button 
+                    onClick={() => disconnect()}
+                    className="px-3 py-1.5 text-sm rounded-lg border border-red-500/20 text-red-400 hover:bg-red-500/10 transition-colors"
+                  >
+                    Disconnect
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  onClick={() => open()}
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-medium transition-all transform hover:scale-105"
+                >
+                  Connect Wallet
+                </button>
+              )}
             </motion.div>
           </div>
         </div>

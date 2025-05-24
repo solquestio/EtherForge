@@ -1,14 +1,21 @@
 import { Inter } from 'next/font/google';
 import { Web3ModalProvider } from './providers';
 import { ThemeWrapper } from '../components/ThemeWrapper';
-import { ClientHeaderWrapper } from '../components/ClientHeaderWrapper';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Web3 Project Generator',
-  description: 'Generate and deploy Web3 projects with a single prompt',
+  title: 'VibeForge - Where Smart Contracts Are Born',
+  description: 'Transform your ideas into production-ready dApps with VibeForge. Generate complete Next.js Web3 applications with smart contracts, frontend interfaces, and deployment configurations.',
+  keywords: ['Web3', 'dApp', 'Smart Contracts', 'Ethereum', 'Blockchain', 'Next.js', 'AI', 'VibeForge'],
+  authors: [{ name: 'VibeForge Team' }],
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/logo-dark.svg', type: 'image/svg+xml', sizes: '32x32' }
+    ]
+  }
 };
 
 export default function RootLayout({
@@ -21,7 +28,6 @@ export default function RootLayout({
       <body className={`${inter.className} min-h-screen bg-background`}>
         <Web3ModalProvider>
           <div className="relative flex min-h-screen flex-col">
-            <ClientHeaderWrapper />
             <ThemeWrapper>
               <div className="flex-1">
                 {children}
