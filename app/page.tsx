@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAccount, useDisconnect } from 'wagmi';
-import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useAccount, useDisconnect, useConnect } from 'wagmi';
+import { injected } from 'wagmi/connectors';
 import TypingEffect from './components/TypingEffect';
 import LoadingSpinner from './components/LoadingSpinner';
 import { aiService, ChatMessage } from './utils/aiService';
@@ -45,7 +45,67 @@ export default function Home() {
   // Wallet hooks
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
-  const { open } = useWeb3Modal();
+  const { connect } = useConnect();
+
+  // Web3Modal state
+  const [web3Modal, setWeb3Modal] = useState<any>(null);
+
+  useEffect(() => {
+    // Initialize Web3Modal on client side
+    if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID) {
+      console.log('Initializing Web3Modal with project ID:', process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID);
+      import('@web3modal/wagmi/react').then(({ createWeb3Modal }) => {
+        try {
+          const modal = createWeb3Modal({
+            wagmiConfig: require('./config/web3').config,
+            projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
+            enableAnalytics: true,
+            themeMode: 'dark',
+            themeVariables: {
+              '--w3m-color-mix': '#6366f1',
+              '--w3m-font-family': 'Inter, sans-serif',
+            },
+          });
+          setWeb3Modal(modal);
+          console.log('Web3Modal initialized successfully');
+        } catch (error) {
+          console.error('Error creating Web3Modal:', error);
+        }
+      }).catch((error) => {
+        console.error('Error importing Web3Modal:', error);
+      });
+    } else {
+      console.log('Web3Modal not initialized - missing project ID or not in browser');
+      console.log('Project ID:', process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID);
+      console.log('Window:', typeof window);
+    }
+  }, []);
+
+  const handleWalletConnect = async () => {
+    console.log('handleWalletConnect called, web3Modal:', web3Modal);
+    
+    // Try Web3Modal first
+    if (web3Modal) {
+      try {
+        console.log('Opening Web3Modal...');
+        await web3Modal.open();
+        console.log('Web3Modal opened successfully');
+        return;
+      } catch (error) {
+        console.error('Failed to connect with Web3Modal:', error);
+      }
+    }
+    
+    // Fallback to direct MetaMask connection
+    try {
+      console.log('Trying direct MetaMask connection...');
+      await connect({ connector: injected() });
+      console.log('MetaMask connected successfully');
+    } catch (error) {
+      console.error('Failed to connect with MetaMask:', error);
+      alert('Please install MetaMask or another Web3 wallet to connect.');
+    }
+  };
 
   useEffect(() => {
     // Initialize with welcome message
@@ -176,7 +236,11 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center space-x-3">
-                <div className="text-3xl">⚡</div>
+                <img 
+                  src="/vibeforge-final-logo.png" 
+                  alt="VibeForge Logo" 
+                  className="w-20 h-20 object-contain"
+                />
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
                   VibeForge
                 </h1>
@@ -206,10 +270,11 @@ export default function Home() {
                 </div>
               ) : (
                 <button 
-                  onClick={() => open()}
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-medium transition-all transform hover:scale-105"
+                  onClick={handleWalletConnect}
+                  disabled={!web3Modal}
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-medium transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  Connect Wallet
+                  {web3Modal ? 'Connect Wallet' : 'Loading...'}
                 </button>
               )}
             </motion.div>

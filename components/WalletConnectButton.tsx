@@ -1,21 +1,50 @@
 'use client';
 
 import { useAccount, useDisconnect } from 'wagmi';
-import { useWeb3Modal } from '@web3modal/wagmi/react'; // Import useWeb3Modal
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 export function WalletConnectButton() {
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
-  const { open } = useWeb3Modal(); // Use the hook
   const router = useRouter();
+  const [web3Modal, setWeb3Modal] = useState<any>(null);
+
+  useEffect(() => {
+    // Initialize Web3Modal on client side
+    if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID) {
+      import('@web3modal/wagmi/react').then(({ createWeb3Modal }) => {
+        const modal = createWeb3Modal({
+          wagmiConfig: require('../app/config/web3').config,
+          projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
+          enableAnalytics: true,
+          themeMode: 'dark',
+          themeVariables: {
+            '--w3m-color-mix': '#6366f1',
+            '--w3m-font-family': 'Inter, sans-serif',
+          },
+        });
+        setWeb3Modal(modal);
+      }).catch(console.error);
+    }
+  }, []);
+
+  const handleConnect = async () => {
+    if (web3Modal) {
+      try {
+        await web3Modal.open();
+      } catch (error) {
+        console.error('Failed to connect wallet:', error);
+      }
+    }
+  };
 
   const handleDisconnect = () => {
     disconnect();
     router.refresh();
   };
   
-  // Wallet not configured warning (can remain as is, or be handled by Web3Modal's UI if preferred)
+  // Wallet not configured warning
   if (!process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID) {
     return (
       <button 
@@ -47,10 +76,11 @@ export function WalletConnectButton() {
 
   return (
     <button 
-      onClick={() => open()} // Call open to trigger Web3Modal
-      className="px-4 py-2 rounded-md bg-gradient-to-r from-green-400 to-blue-500 text-white font-medium hover:from-green-500 hover:to-blue-600 transition-colors"
+      onClick={handleConnect}
+      disabled={!web3Modal}
+      className="px-4 py-2 rounded-md bg-gradient-to-r from-green-400 to-blue-500 text-white font-medium hover:from-green-500 hover:to-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      Connect Wallet
+      {web3Modal ? 'Connect Wallet' : 'Loading...'}
     </button>
   );
 }
