@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import * as ethers from 'ethers';
-import { web3Modal, connectWallet as connect, disconnectWallet as disconnect } from '../config/web3';
+import { config } from '../config/web3';
 
 interface Web3ContextType {
   isConnected: boolean;
@@ -35,21 +35,8 @@ export const Web3ModalProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   const connectWallet = async (): Promise<void> => {
     try {
-      // Get the provider from web3Modal
-      const web3Provider = await connect();
-      
-      // Create ethers provider
-      // @ts-ignore - Ignoring TypeScript error for ethers.js provider
-      const ethersProvider = new ethers.providers.Web3Provider(web3Provider);
-      const ethersSigner = ethersProvider.getSigner();
-      const userAddress = await ethersSigner.getAddress();
-      const network = await ethersProvider.getNetwork();
-
-      setProvider(ethersProvider);
-      setSigner(ethersSigner);
-      setAddress(userAddress);
-      setChainId(network.chainId);
-      setIsConnected(true);
+      // This is handled by wagmi hooks in the main component
+      console.log('Connect wallet called - handled by wagmi');
     } catch (error) {
       console.error('Error connecting wallet:', error);
       setIsConnected(false);
@@ -61,7 +48,8 @@ export const Web3ModalProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   };
 
   const disconnectWallet = () => {
-    disconnect();
+    // This is handled by wagmi hooks in the main component
+    console.log('Disconnect wallet called - handled by wagmi');
     setIsConnected(false);
     setAddress(null);
     setChainId(null);
